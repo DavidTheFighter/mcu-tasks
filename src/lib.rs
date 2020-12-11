@@ -40,6 +40,8 @@ impl TaskHandler {
                     start: (self.now)(),
                     duration: (self.duration_to_count)(period),
                 });
+
+                break;
             }
         }
     }
@@ -52,6 +54,8 @@ impl TaskHandler {
                     start: (self.now)() + (self.duration_to_count)(delay),
                     duration: (self.duration_to_count)(period),
                 });
+
+                break;
             }
         }
     }
@@ -71,6 +75,8 @@ impl TaskHandler {
                         start: (self.now)(),
                         duration: (self.duration_to_count)(wait),
                     });
+
+                    break;
                 }
             }
         }

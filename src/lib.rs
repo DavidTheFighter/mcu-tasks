@@ -13,16 +13,16 @@ struct TaskData {
     duration: u32,
 }
 
-pub struct TaskHandler<'a> {
+pub struct TaskHandler {
     periodic_tasks: [Option<TaskData>; MAX_PERIODIC_TASKS],
     one_off_tasks: [Option<TaskData>; MAX_ONE_OFF_TASKS],
     one_off_index: usize,
-    now: &'a dyn Fn() -> u32,
-    duration_to_count: &'a dyn Fn(Duration) -> u32,
+    now: fn() -> u32,
+    duration_to_count: fn(Duration) -> u32,
 }
 
-impl<'a> TaskHandler<'a> {
-    pub fn new(now: &'a dyn Fn() -> u32, duration_to_count: &'a dyn Fn(Duration) -> u32) -> Self {
+impl TaskHandler {
+    pub fn new(now: fn() -> u32, duration_to_count: fn(Duration) -> u32) -> Self {
         Self {
             periodic_tasks: [None; MAX_PERIODIC_TASKS],
             one_off_tasks: [None; MAX_ONE_OFF_TASKS],

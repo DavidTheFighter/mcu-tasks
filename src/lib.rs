@@ -1,3 +1,8 @@
+//! An implementation of a super-simple time-based task handler. It supports periodic tasks that are
+//! executed periodically, and one-off tasks that are executed after a particular delay. The design
+//! is single-threaded, as it's designed to be used on single-core MCUs. Tasks should be pretty small
+//! chunks of code. If they take too long, other tasks may wait longer than expected to execute.
+
 #![no_std]
 #![forbid(unsafe_code)]
 
